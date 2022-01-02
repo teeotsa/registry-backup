@@ -1,4 +1,4 @@
-﻿Clear
+Clear
 $ErrorActionPreference = "SilentlyContinue"
 $RestoreFolder = "$PSScriptRoot\Restore"
 
