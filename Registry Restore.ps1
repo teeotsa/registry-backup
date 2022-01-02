@@ -2,6 +2,17 @@ Clear
 $ErrorActionPreference = "SilentlyContinue"
 $RestoreFolder = "$PSScriptRoot\Restore"
 
+if(Test-Path $RestoreFolder){
+    Remove-Item -Path $RestoreFolder -Recurse -Force | Out-Null
+    Write-Host "Folder `"" -NoNewline
+    Write-Host $RestoreFolder -NoNewline -ForegroundColor Green
+    Write-Host "`" was deleted!"
+}
+New-Item -Path $RestoreFolder -ItemType Directory | Out-Null
+Write-Host "Created `"" -NoNewline
+Write-Host $RestoreFolder -NoNewline -ForegroundColor Green
+Write-Host "`" folder!"
+
 if((Test-Path $RestoreFolder) -eq $true){
 
     $PATHS = @(
@@ -93,5 +104,8 @@ if((Test-Path $RestoreFolder) -eq $true){
         $File = Join-Path -Path $RestoreFolder -ChildPath "$RandomNumber.reg"
         $String = $_.ToString() 
         reg export $String $File
+        Write-Host "File `"" -NoNewline
+        Write-Host $File -NoNewline -ForegroundColor Green
+        Write-Host "`" was created"
     }
 } 
